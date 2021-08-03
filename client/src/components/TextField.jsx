@@ -5,6 +5,12 @@ import "../styles/TextField.css";
 const TextField = () => {
 	const [search, setSearch] = useState();
 	const [error, setError] = useState();
+	const [stores, setStores] = useState([]);
+	const [addresses, setAddresses] = useState([]);
+	const [numbers, setNumbers] = useState([]);
+	let liststores;
+	let listaddresses;
+	let listnumbers;
 	const handleSearch = async (e) => {
 		e.preventDefault();
 		if (search.length === 5) {
@@ -17,7 +23,12 @@ const TextField = () => {
 				},
 			})
 				.then((res) => {
-					console.log(res.data);
+					setStores(res.data.stores);
+					setAddresses(res.data.addresses);
+					setNumbers(res.data.numbers);
+					if (res.data.error) {
+						setError(res.data.error);
+					}
 				})
 				.catch((err) => {
 					console.log(err);
@@ -27,6 +38,23 @@ const TextField = () => {
 			setError("Zip code is not long enough");
 		}
 	};
+
+	if (stores) {
+		liststores = stores.map((store, idx) => {
+			return <li key={idx}>{store}</li>;
+		});
+	}
+
+	if (addresses) {
+		listaddresses = addresses.map((address, idx) => {
+			return <li key={idx}>{address}</li>;
+		});
+	}
+	if (numbers) {
+		listnumbers = numbers.map((number, idx) => {
+			return <li key={idx}>{number}</li>;
+		});
+	}
 
 	const handleOnChange = (e) => {
 		setSearch(e.target.value);
@@ -45,7 +73,9 @@ const TextField = () => {
 				<form action="submit" onSubmit={handleSearch}>
 					<label htmlFor="search">Zip Code</label>
 					<input
+						id="zip"
 						type="text"
+						pattern="[0-9]{5}"
 						className="search-input"
 						maxLength="5"
 						onChange={handleOnChange}
@@ -55,9 +85,19 @@ const TextField = () => {
 			</div>
 
 			<div className="result-container">
-				<div className="store"></div>
-				<div className="address"></div>
-				<div className="phone"></div>
+				<div className="store">
+					<div>Stores</div>
+					{liststores}
+				</div>
+				<div className="address">
+					<div>Addresses</div>
+
+					{listaddresses}
+				</div>
+				<div className="phone">
+					<div>Phone Numbers</div>
+					{listnumbers}
+				</div>
 			</div>
 		</>
 	);
