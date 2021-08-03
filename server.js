@@ -14,7 +14,7 @@ const apiLimiter = rateLimit({
 	max: 100, // limit each IP to 100 requests per windowMs
 });
 
-// app.use(apiLimiter);
+app.use(apiLimiter);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
