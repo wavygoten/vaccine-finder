@@ -1,0 +1,53 @@
+.title-container {
+	display: flex;
+	margin: 1rem 2rem;
+	align-items: center;
+}
+.title {
+	font-size: 25px;
+	padding: 0 0.75rem;
+	user-select: none;
+	font-weight: 500;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+img {
+	width: 50px;
+	height: auto;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	margin: 4rem 0;
+	padding: 1rem;
+}
+
+form {
+	display: flex;
+	flex-flow: column wrap;
+}
+label {
+	font-size: large;
+	font-weight: 500;
+	user-select: none;
+	color: #1c1c1c;
+	text-align: center;
+}
+
+input {
+	border: none;
+	border-radius: 3px;
+	background-color: #d2d2d2;
+	color: black;
+	padding: 5px;
+	margin: 1rem;
+	font-weight: 300;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: bold;
+	text-align: center;
+}
+
+.container > form > div {
+	text-align: center;
+}
