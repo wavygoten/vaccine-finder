@@ -41,6 +41,7 @@
 	},
 	"proxy": "http://127.0.0.1:9559/",
 	"devDependencies": {
+		"cross-env": "^7.0.3",
 		"serve": "^12.0.0"
 	}
 }
