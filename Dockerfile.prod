@@ -5,10 +5,11 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
+COPY scripts/install-build.sh /scripts/install-build.sh
 
 RUN chmod +x /scripts/install-build.sh
 
-RUN /scripts/install-build.sh
+# RUN ./scripts/install-build.sh
 
 EXPOSE 9559
 

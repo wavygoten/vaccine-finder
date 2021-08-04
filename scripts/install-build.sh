@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd client
+cd ../client
 
 npm install
 
